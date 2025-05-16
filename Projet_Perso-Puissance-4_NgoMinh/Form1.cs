@@ -121,6 +121,7 @@ namespace Projet_Perso_Puissance_4_NgoMinh
             
 
 
+
             // Vérifier la victoire après chaque coup
             if (CheckWin(x, y))//la méthode Checkwin va avec la méthode finish pour finir le jeu.
             {
@@ -181,7 +182,7 @@ namespace Projet_Perso_Puissance_4_NgoMinh
         // Vérifier si toutes les cases sont remplies (match nul)
         private bool CheckDraw()
         {
-            for (int i = 0; i < 8; i++)  // Parcours des lignes
+            for (int i = 0; i < 6; i++) // Correct : 0 à 5 (6 lignes)
             {
                 for (int j = 0; j < 7; j++)  //Parcours des colonnes
                 {
