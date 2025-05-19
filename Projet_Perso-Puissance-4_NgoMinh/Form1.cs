@@ -83,9 +83,9 @@ namespace Projet_Perso_Puissance_4_NgoMinh
             int x = (int)char.GetNumericValue(char_x);
             int y = (int)char.GetNumericValue(char_y);
             
-            //Les pièces qui sont jouées lorsque je clique sur un bouton
+            //Les pièces rouges qui sont jouées lorsque je clique sur un bouton
             if (is_red == true)
-            {
+            {                
                 MessageBox.Show("Piece Rouge");// afficher un message pour le tour du joueur 1
                 // Vérifier si il y a déjà une pièce posée
                 int max_height = 0;
@@ -104,9 +104,11 @@ namespace Projet_Perso_Puissance_4_NgoMinh
                 // Poser la pièce rouge
                 DropPieceDown(max_height, y, "red");
                 // Le tour du joueur 1
-                is_red = false; 
+                is_red = false;
+                MessageBox.Show("À vous de jouer, Joueur 2");
             }
 
+            //Les pièces jaunes qui sont jouées lorsque je clique sur un bouton
             else
             {
                 MessageBox.Show("Piece Jaune"); // afficher un message pour le tour du joueur 2
@@ -126,7 +128,8 @@ namespace Projet_Perso_Puissance_4_NgoMinh
                 // Poser la pièce jaune
                 DropPieceDown(max_height, y, "yellow");
                 // Le tour du joueur 2
-                is_red = true; 
+                is_red = true;
+                MessageBox.Show("À vous de jouer, Joueur 1");
             }
             
             // Vérifier la victoire si 4 pièces sont alignées
