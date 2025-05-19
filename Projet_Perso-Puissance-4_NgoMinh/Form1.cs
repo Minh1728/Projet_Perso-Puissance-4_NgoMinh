@@ -42,8 +42,9 @@ namespace Projet_Perso_Puissance_4_NgoMinh
             InitializeComponent();
             game = new int[6, 7];
 
-            // Un message est affiché pour le joueur 1 avec son choix pour les pièces et c'est lui qui commence à jouer
-            DialogResult dialogResult = MessageBox.Show("Joueur 1", "Choisissez les pièces entre Rouge ou Jaune", MessageBoxButtons.YesNo);
+            // Un message est affiché pour le joueur 1 qui commence avec son choix pour les pièces et jouer
+            DialogResult dialogResult = MessageBox.Show
+            ("Joueur 1", "Choisissez les pièces entre Rouge ou Jaune", MessageBoxButtons.YesNo);
 
             // Si j'appuie oui, je choisis les pièces rouges avec un fond Navy un peu bleu foncé.
             if (dialogResult == DialogResult.Yes)
