@@ -39,17 +39,18 @@ namespace Projet_Perso_Puissance_4_NgoMinh
             InitializeComponent();
             game = new int[6, 7];
 
-            DialogResult dialogResult = MessageBox.Show("Joueur 1", "Choisissez les pièces entre Rouge ou Jaune", MessageBoxButtons.YesNo);
+            // Un message est affiché pour le joueur 1 avec son choix pour les pièces et c'est lui qui commence à jouer
+            DialogResult dialogResult = MessageBox.Show("Joueur 1", "Choisissez les pièces entre Rouge ou Jaune", MessageBoxButtons.YesNo); 
 
             if (dialogResult == DialogResult.Yes)// si j'appuie oui, je choisis les pièces rouges avec un fond Navy un peu bleu foncé.
             {
-                is_red = true;
+                is_red = true; // Si le joueur 1 appuie sur OUi
                 BackColor = Color.Navy; // Fond bleu foncé = Navy
             }
 
             else // sinon je choisis les pièces jaunes avec un fond vert.
             {
-                is_red = false;
+                is_red = false; // Si le joueur 1 appuie Non
                 BackColor = Color.Green; // Fond Vert
             }
 
@@ -57,6 +58,7 @@ namespace Projet_Perso_Puissance_4_NgoMinh
 
         }
 
+        //La partie ou les 2 joueurs jouent leurs pièces respectifs 
         private void btn_play(object sender, EventArgs e)
         {
 
@@ -81,7 +83,7 @@ namespace Projet_Perso_Puissance_4_NgoMinh
                 // Vérifier si il y a déjà une pièce posée
                 int max_height = 0;
 
-                for (int i = 5; i > 0; i--)
+                for (int i = 5; i > 0; i--) //Une for pour faire la limite de la grille et du jeu avec les pièces rouges
 
                 {
                     if(game[i, y] == 0)
@@ -91,10 +93,10 @@ namespace Projet_Perso_Puissance_4_NgoMinh
                     }
                 }
 
-                // Poser la pièce
+                // Poser la pièce rouge
                 DropPieceDown(max_height, y, "red");
 
-                is_red = false;
+                is_red = false;// Le tour du joueur 1
             }
 
             else
@@ -103,8 +105,7 @@ namespace Projet_Perso_Puissance_4_NgoMinh
                 // Vérifier si il y a déjà une pièce posée
                 int max_height = 0;
 
-                for (int i = 5
-                    ; i > 0; i--)
+                for (int i = 5; i > 0; i--)//Une for pour faire la limite de la grille et du jeu avec les pièces jaunes
                 {
                     if (game[i, y] == 0)
                     {
@@ -113,7 +114,7 @@ namespace Projet_Perso_Puissance_4_NgoMinh
                     }
                 }
 
-                // Poser la pièce
+                // Poser la pièce jaune
                 DropPieceDown(max_height, y, "yellow");
 
                 is_red = true;
@@ -122,10 +123,10 @@ namespace Projet_Perso_Puissance_4_NgoMinh
 
 
 
-            // Vérifier la victoire après chaque coup
+            // Vérifier la victoire si 4 pièces sont alignées
             if (CheckWin(x, y))//la méthode Checkwin va avec la méthode finish pour finir le jeu.
             {
-                Finish();  // Déclenche la méthode de fin de partie
+                Finish();  // Déclenche la fin de partie
             }
             else if (CheckDraw())  // Si toutes les cases sont remplies, le jeu s'arrête
             {
@@ -147,6 +148,7 @@ namespace Projet_Perso_Puissance_4_NgoMinh
 
         }
         
+        //La partie ou la pièce est posé et la plus importante du jeu
         private void DropPieceDown(int x, int y, string color)
         {
             // récupérer tous les boutons du jeu
@@ -158,21 +160,21 @@ namespace Projet_Perso_Puissance_4_NgoMinh
             // Parcourir tous les items de controls
             foreach (var item in controls)
             {
-                // Si l'item à le même tag que notre tag
+                // Si l'item a le même tag que notre tag 
                 if(Convert.ToString(item.Tag) == tagline)
                 {
                     // Mettre le bouton à la bonne couleur
                     if(color == "yellow")
                     {
-                        item.BackColor = Color.Yellow;
-                        item.Enabled = false;
-                        game[x, y] = 1;
+                        item.BackColor = Color.Yellow; // Couleur du bouton jaune
+                        item.Enabled = false; // Confirmer sa position ou il a joué
+                        game[x, y] = 1; // Pièce jaune parce que le game x/y en 1 est pour les pièces jaunes
                     }
                     else if (color == "red")
                     {
-                        item.BackColor = Color.Red;
-                        item.Enabled = false;
-                        game[x, y] = 2;
+                        item.BackColor = Color.Red; // Couleur du bouton rouge
+                        item.Enabled = false; // Confirmer sa position ou il a joué
+                        game[x, y] = 2; // Pièce rouge parce que le game x/y en 2 est pour les pièces rouges
                     }
                 }
             }
@@ -182,7 +184,7 @@ namespace Projet_Perso_Puissance_4_NgoMinh
         // Vérifier si toutes les cases sont remplies (match nul)
         private bool CheckDraw()
         {
-            for (int i = 0; i < 6; i++) // Correct : 0 à 5 (6 lignes)
+            for (int i = 0; i < 6; i++) // Si toutes les pièces sont remplies
             {
                 for (int j = 0; j < 7; j++)  //Parcours des colonnes
                 {
@@ -209,10 +211,10 @@ namespace Projet_Perso_Puissance_4_NgoMinh
             // Chaque direction est un tableau [dx, dy]
             int[][] directions = new int[][]
             {
-        new int[] { 0, 1 },   // ↔ Horizontal : gauche-droite
-        new int[] { 1, 0 },   // ↕ Vertical : haut-bas
-        new int[] { 1, 1 },   // ↘ Diagonale descendante (haut-gauche vers bas-droit)
-        new int[] { 1, -1 }   // ↗ Diagonale montante (bas-gauche vers haut-droit)
+                new int[] { 0, 1 },   // ↔ Horizontal : gauche-droite
+                new int[] { 1, 0 },   // ↕ Vertical : haut-bas
+                new int[] { 1, 1 },   // ↘ Diagonale descendante (haut-gauche vers bas-droit)
+                new int[] { 1, -1 }   // ↗ Diagonale montante (bas-gauche vers haut-droit)
             };
 
             // Vérifie chaque direction pour compter les pièces alignées
@@ -236,12 +238,12 @@ namespace Projet_Perso_Puissance_4_NgoMinh
         }
 
 
-        // Cette méthode compte le nombre de pièces alignées dans une direction donnée
+        // Cette méthode compte le nombre de pièces alignées dans une direction indiquée
         private int CountInDirection(int startX, int startY, int dx, int dy, int player)
         {
             int count = 0;
 
-            // Commence une case plus loin dans la direction donnée
+            // Commence une case plus loin dans la direction indiquée
             int x = startX + dx;
             int y = startY + dy;
 
@@ -296,14 +298,14 @@ namespace Projet_Perso_Puissance_4_NgoMinh
             var controls = getControls(this);
         }
 
-        //Quitter la partie si le joueur ragequit ou si ça ne marche pas
+        //Quitter la partie si le joueur en a marre ou si le code ne marche pas dans le Puissance 4
         private void btn_quit(object sender, EventArgs e)
         {
             Close();
         }
 
 
-        // Récupérer tous les controls (bouttons, labels, panels, etc...) d'un formulaire passé en paramètre
+        // Récupérer tous les controls (bouttons, labels, panels, etc...) d'un formulaire passé en paramètre et bout de code récupérer lors du deuxième stage d'informatique pour la bataille navale
         private List<Control> getControls(Control controlPanel)
         {
             List<Control> controls = new List<Control>();
