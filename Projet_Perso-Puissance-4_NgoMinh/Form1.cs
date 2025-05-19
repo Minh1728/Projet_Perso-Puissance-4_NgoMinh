@@ -131,9 +131,10 @@ namespace Projet_Perso_Puissance_4_NgoMinh
                 is_red = true;
                 MessageBox.Show("À vous de jouer, Joueur 1");
             }
-            
+
             // Vérifier la victoire si 4 pièces sont alignées
-            if (CheckWin(x, y))//la méthode Checkwin va avec la méthode finish pour finir le jeu.
+            //la méthode Checkwin va avec la méthode finish pour finir le jeu.
+            if (CheckWin(x, y))
             {
                 // Déclenche la fin de partie
                 Finish(); 
@@ -273,6 +274,7 @@ namespace Projet_Perso_Puissance_4_NgoMinh
         // Cette méthode compte le nombre de pièces alignées dans une direction indiquée
         private int CountInDirection(int startX, int startY, int dx, int dy, int player)
         {
+            //Je déclare la variable count pour le nombre des pièces
             int count = 0;
 
             // Commence une case plus loin dans la direction indiquée
@@ -333,8 +335,7 @@ namespace Projet_Perso_Puissance_4_NgoMinh
             // Fais recommencer la partie
             System.Windows.Forms.Application.Restart();
             //Reprends tous les controls (bouttons, labels, panels, etc...)
-            // d'un formulaire passé en paramètre et bout de code récupérer
-            // lors du deuxième stage d'informatique pour la bataille navale
+            // d'un formulaire passé en paramètre 
             var controls = getControls(this);
         }
 
@@ -342,7 +343,8 @@ namespace Projet_Perso_Puissance_4_NgoMinh
         //Quitter la partie si le joueur en a marre ou si le code ne marche pas dans le Puissance 4
         private void btn_quit(object sender, EventArgs e)
         {
-            Close(); // Quitte immédiatement la partie
+            // Quitte immédiatement la partie
+            Close(); 
         }
 
 
@@ -360,8 +362,6 @@ namespace Projet_Perso_Puissance_4_NgoMinh
 
             return controls;
         }
-
-
     }
 
 }
