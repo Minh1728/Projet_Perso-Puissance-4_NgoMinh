@@ -33,6 +33,7 @@ namespace Projet_Perso_Puissance_4_NgoMinh
         // Liste pour stocker tous les boutons
         private Button[] buttons = new Button[7];
 
+
         public Form1()
         {
             //Le message du début lorsqu'on démarre le jeu
@@ -58,6 +59,7 @@ namespace Projet_Perso_Puissance_4_NgoMinh
 
         }
 
+
         //La partie ou les 2 joueurs jouent leurs pièces respectifs 
         private void btn_play(object sender, EventArgs e)
         {
@@ -65,11 +67,11 @@ namespace Projet_Perso_Puissance_4_NgoMinh
             //Mettre à jour les boutons avec les tags et les messages.
             Button btn_clicked = (Button)sender;
 
-            string tag = btn_clicked.Tag.ToString();
+            string tag = btn_clicked.Tag.ToString(); // mettre le string tag en btn_clicked.Tag.ToString
             MessageBox.Show("Tag du bouton cliqué : " + tag);  // Debug pour voir le tag
                                                                // Récupérer la colonne à partir du tag du bouton.
 
-            char char_x = Convert.ToString(btn_clicked.Tag)[0];
+            char char_x = Convert.ToString(btn_clicked.Tag)[0]; 
             char char_y = Convert.ToString(btn_clicked.Tag)[2];
 
             int x = (int)char.GetNumericValue(char_x);
@@ -95,8 +97,7 @@ namespace Projet_Perso_Puissance_4_NgoMinh
 
                 // Poser la pièce rouge
                 DropPieceDown(max_height, y, "red");
-
-                is_red = false;// Le tour du joueur 1
+                is_red = false; // Le tour du joueur 1
             }
 
             else
@@ -116,13 +117,9 @@ namespace Projet_Perso_Puissance_4_NgoMinh
 
                 // Poser la pièce jaune
                 DropPieceDown(max_height, y, "yellow");
-
-                is_red = true;
+                is_red = true; // Le tour du joueur 2
             }
             
-
-
-
             // Vérifier la victoire si 4 pièces sont alignées
             if (CheckWin(x, y))//la méthode Checkwin va avec la méthode finish pour finir le jeu.
             {
@@ -145,9 +142,9 @@ namespace Projet_Perso_Puissance_4_NgoMinh
                 }
             }
 
-
         }
         
+
         //La partie ou la pièce est posé et la plus importante du jeu
         private void DropPieceDown(int x, int y, string color)
         {
@@ -180,6 +177,7 @@ namespace Projet_Perso_Puissance_4_NgoMinh
             }
         }
     
+
         // La condition d'égalité
         // Vérifier si toutes les cases sont remplies (match nul)
         private bool CheckDraw()
@@ -211,21 +209,21 @@ namespace Projet_Perso_Puissance_4_NgoMinh
             // Chaque direction est un tableau [dx, dy]
             int[][] directions = new int[][]
             {
-                new int[] { 0, 1 },   // ↔ Horizontal : gauche-droite
-                new int[] { 1, 0 },   // ↕ Vertical : haut-bas
-                new int[] { 1, 1 },   // ↘ Diagonale descendante (haut-gauche vers bas-droit)
-                new int[] { 1, -1 }   // ↗ Diagonale montante (bas-gauche vers haut-droit)
+                new int[] { 0, 1 },   // ↔ Direction Horizontal (Droite ou gauche)
+                new int[] { 1, 0 },   // ↕ Direction Vertical (Haut ou bas)
+                new int[] { 1, 1 },   // ↘ Direction Diagonale descendante (haut-gauche vers bas-droit)
+                new int[] { 1, -1 }   // ↗ Direction Diagonale montante (bas-gauche vers haut-droit)
             };
 
             // Vérifie chaque direction pour compter les pièces alignées
             foreach (var dir in directions)
             {
-                int count = 1; // Commence à 1 pour inclure la pièce actuelle
+                int count = 1; // On commence à 1 pour compter la pièce que le joueur vient de poser
 
-                // Compte dans la direction normale (ex: vers la droite, vers le bas...)
+                // On compte les pièces alignées dans une direction non-opposée (exemple : à droite, en bas, en diagonale...)
                 count += CountInDirection(lastX, lastY, dir[0], dir[1], player);
 
-                // Compte dans la direction opposée (ex: vers la gauche, vers le haut...)
+                // On compte aussi les pièces dans la direction opposée (ex : à gauche, en haut...)
                 count += CountInDirection(lastX, lastY, -dir[0], -dir[1], player);
 
                 // Si on atteint 4 pièces alignées ou plus, le joueur gagne
@@ -259,8 +257,6 @@ namespace Projet_Perso_Puissance_4_NgoMinh
         }
 
 
-
-
         // Fonction pour gérer la fin de la partie et offrir au gagnant de recommencer ou quitter
         private void Finish()
         {
@@ -291,12 +287,14 @@ namespace Projet_Perso_Puissance_4_NgoMinh
             btn_Start.Enabled = false;
         }
 
+
         // Recommence la partie du puissance 4
         private void ResetGame()
         {
             System.Windows.Forms.Application.Restart();
             var controls = getControls(this);
         }
+
 
         //Quitter la partie si le joueur en a marre ou si le code ne marche pas dans le Puissance 4
         private void btn_quit(object sender, EventArgs e)
