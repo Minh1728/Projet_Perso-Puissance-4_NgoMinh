@@ -182,7 +182,7 @@ namespace Projet_Perso_Puissance_4_NgoMinh
         // Vérifier si toutes les cases sont remplies (match nul)
         private bool CheckDraw()
         {
-            for (int i = 0; i < 6; i++) // Si toutes les pièces sont remplies
+            for (int i = 0; i < 6; i++) // Si toutes les pièces ont remplies toutes les colonnes
             {
                 for (int j = 0; j < 7; j++)  //Parcours des colonnes
                 {
@@ -196,7 +196,7 @@ namespace Projet_Perso_Puissance_4_NgoMinh
         }
 
 
-        // Cette méthode vérifie si le joueur a gagné après avoir joué à la position (lastX, lastY)
+        // Cette méthode vérifie si le joueur 1 ou 2 a gagné après avoir joué la dernière position (lastX, lastY)
         private bool CheckWin(int lastX, int lastY)
         {
             // Récupère le joueur actuel (1 = jaune, 2 = rouge)
