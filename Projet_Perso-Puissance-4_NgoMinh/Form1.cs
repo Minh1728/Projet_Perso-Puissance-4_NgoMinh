@@ -228,11 +228,11 @@ namespace Projet_Perso_Puissance_4_NgoMinh
 
                 // Si on atteint 4 pièces alignées ou plus, le joueur gagne
                 if (count >= 4)
-                    return true;
+                    return true; // Confirme la victoire
             }
 
             // Si aucune des directions n'a donné 4 pièces alignées, pas de victoire
-            return false;
+            return false; // Ne confirme aucune victoire
         }
 
 
@@ -249,8 +249,8 @@ namespace Projet_Perso_Puissance_4_NgoMinh
             while (x >= 0 && x < 6 && y >= 0 && y < 7 && game[x, y] == player)
             {
                 count++; // Incrémente le nombre de pièces alignées
-                x += dx; // Avance dans la direction horizontale ou verticale ou diagonale
-                y += dy;
+                x += dx; // On avance d'une case dans la direction choisie (gauche, droite, haut, bas ou diagonale)
+                y += dy; // On avance d'une case dans la direction choisie (gauche, droite, haut, bas ou diagonale)
             }
 
             return count; // Retourne le nombre de pièces trouvées dans cette direction
@@ -283,15 +283,15 @@ namespace Projet_Perso_Puissance_4_NgoMinh
         private void StartGame()
         {
             // Afficher un message pour commencer
-            MessageBox.Show("La partie commence ! Bonne partie");
-            btn_Start.Enabled = false;
+            MessageBox.Show("La partie commence ! Bonne partie"); 
+            btn_Start.Enabled = false; // Confirme le bouton commencer
         }
 
 
         // Recommence la partie du puissance 4
         private void ResetGame()
         {
-            System.Windows.Forms.Application.Restart();
+            System.Windows.Forms.Application.Restart(); // Fais recommencer la partie
             var controls = getControls(this);
         }
 
@@ -299,7 +299,7 @@ namespace Projet_Perso_Puissance_4_NgoMinh
         //Quitter la partie si le joueur en a marre ou si le code ne marche pas dans le Puissance 4
         private void btn_quit(object sender, EventArgs e)
         {
-            Close();
+            Close(); // Quitte immédiatement la partie
         }
 
 
