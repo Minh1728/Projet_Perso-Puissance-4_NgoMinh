@@ -363,6 +363,5 @@ namespace Projet_Perso_Puissance_4_NgoMinh
             return controls;
         }
     }
-
 }
 
