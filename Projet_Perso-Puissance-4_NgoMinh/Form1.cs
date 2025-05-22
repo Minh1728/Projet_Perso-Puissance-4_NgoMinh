@@ -298,8 +298,6 @@ namespace Projet_Perso_Puissance_4_NgoMinh
         // Fonction pour gérer la fin de la partie et offrir au gagnant de recommencer ou quitter
         private void Finish()
         {
-            //Mettre l'image avant le message et petite touche de fin
-            this.BackgroundImage = Properties.Resources.Toundi_Chadi;
             // Afficher un message pour gagner.
             var result = MessageBox.Show("Félicitations vainqueur, tu as gagné ! Veux-tu quitter ?",
                                           "Fin de la partie",
