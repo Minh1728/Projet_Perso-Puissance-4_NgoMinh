@@ -507,7 +507,7 @@
             // 
             // btn_Start
             // 
-            this.btn_Start.Location = new System.Drawing.Point(1071, 420);
+            this.btn_Start.Location = new System.Drawing.Point(971, 394);
             this.btn_Start.Name = "btn_Start";
             this.btn_Start.Size = new System.Drawing.Size(102, 64);
             this.btn_Start.TabIndex = 42;
@@ -516,7 +516,7 @@
             // 
             // btn_Quit
             // 
-            this.btn_Quit.Location = new System.Drawing.Point(1071, 562);
+            this.btn_Quit.Location = new System.Drawing.Point(971, 577);
             this.btn_Quit.Name = "btn_Quit";
             this.btn_Quit.Size = new System.Drawing.Size(102, 64);
             this.btn_Quit.TabIndex = 43;
