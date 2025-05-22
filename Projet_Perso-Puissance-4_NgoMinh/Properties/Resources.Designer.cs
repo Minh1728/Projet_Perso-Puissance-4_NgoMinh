@@ -59,15 +59,5 @@ namespace Projet_Perso_Puissance_4_NgoMinh.Properties {
                 resourceCulture = value;
             }
         }
-        
-        /// <summary>
-        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap Toundi_Chadi {
-            get {
-                object obj = ResourceManager.GetObject("Toundi_Chadi", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
     }
 }
