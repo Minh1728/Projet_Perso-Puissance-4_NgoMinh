@@ -225,10 +225,10 @@ namespace Projet_Perso_Puissance_4_NgoMinh
 
 
         // Cette méthode vérifie si le joueur 1 ou 2 a gagné après avoir joué la dernière position (lastX, lastY)
-        private bool CheckWin(int lastX, int lastY)
+        private bool CheckWin(int lastrow, int lastcol)
         {
             // Récupère le joueur actuel (1 = jaune, 2 = rouge)
-            int player = game[lastX, lastY];
+            int player = game[lastrow, lastcol];
 
             // Si aucune pièce n'a été jouée à cet emplacement, retour immédiat
             if (player == 0) return false;
@@ -255,10 +255,10 @@ namespace Projet_Perso_Puissance_4_NgoMinh
 
                 // On compte les pièces alignées dans une direction non-opposée
                 // (exemple : à droite, en bas, en diagonale...)
-                count += CountInDirection(lastX, lastY, dir[0], dir[1], player);
+                count += CountInDirection(lastrow, lastcol, dir[0], dir[1], player);
 
                 // On compte aussi les pièces dans la direction opposée (ex : à gauche, en haut...)
-                count += CountInDirection(lastX, lastY, -dir[0], -dir[1], player);
+                count += CountInDirection(lastrow, lastcol, -dir[0], -dir[1], player);
 
                 // Si on atteint 4 pièces alignées ou plus, le joueur gagne
                 if (count >= 4)
