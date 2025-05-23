@@ -259,7 +259,6 @@ namespace Projet_Perso_Puissance_4_NgoMinh
 
                 // On compte aussi les pièces dans la direction opposée (ex : à gauche, en haut...)
                 count += CountInDirection(lastrow, lastcol, -dir[0], -dir[1], player);
-
                 // Si on atteint 4 pièces alignées ou plus, le joueur gagne
                 if (count >= 4)
                     // Confirme la victoire
@@ -280,9 +279,10 @@ namespace Projet_Perso_Puissance_4_NgoMinh
             // Commence une case plus loin dans la direction indiquée
             int x = startX + dx;
             int y = startY + dy;
-
+            int rows = game.GetLength(0);
+            int cols = game.GetLength(1);
             // Continue tant qu'on est dans les limites du tableau et que les cases appartiennent au même joueur
-            while (x >= 0 && x < 6 && y >= 0 && y < 7 && game[x, y] == player)
+            while (x >= 0 && x < rows && y >= 0 && y < cols && game[x, y] == player)
             {
                 // Incrémente le nombre de pièces alignées
                 count++;
@@ -291,7 +291,7 @@ namespace Projet_Perso_Puissance_4_NgoMinh
                 y += dy; 
             }
             // Retourne le nombre de pièces trouvées dans cette direction
-            return count; 
+            return count;
         }
 
 
