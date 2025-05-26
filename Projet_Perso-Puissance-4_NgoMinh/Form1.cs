@@ -23,7 +23,6 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 
-
 namespace Projet_Perso_Puissance_4_NgoMinh
 {
     public partial class Form1 : Form
