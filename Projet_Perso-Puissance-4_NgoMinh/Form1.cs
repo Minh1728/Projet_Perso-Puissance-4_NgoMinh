@@ -107,6 +107,8 @@ namespace Projet_Perso_Puissance_4_NgoMinh
                 MessageBox.Show("À vous de jouer, Joueur 2");
             }
 
+
+
             //Les pièces jaunes qui sont jouées lorsque je clique sur un bouton
             else
             {
